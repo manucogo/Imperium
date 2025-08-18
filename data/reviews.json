@@ -1,0 +1,96 @@
+{
+  "summary": {
+    "rating": 4.9,
+    "total_reviews": 28,
+    "google_place_id": "ChIJXXXXXXXXXXXXXXXXXXXXXX"
+  },
+  "reviews": [
+    {
+      "id": 1,
+      "text": "Llevo 6 meses entrenando en IMPERIUM y ha sido una experiencia increíble. Los entrenadores son muy profesionales y el ambiente es genial. He mejorado muchísimo mi forma física y me siento más fuerte que nunca. ¡Totalmente recomendado!",
+      "rating": 5,
+      "author": {
+        "name": "María González",
+        "photo": "https://via.placeholder.com/80x80/ff6600/ffffff?text=MG",
+        "initials": "MG"
+      },
+      "date": "2024-12-15",
+      "relative_date": "Hace 2 semanas",
+      "source": "Google"
+    },
+    {
+      "id": 2,
+      "text": "El mejor box de crosstraining de Granada sin duda. Las instalaciones están perfectas, el equipo de última generación y Rubén es un entrenador excepcional. Cada clase es un reto nuevo y motivador.",
+      "rating": 5,
+      "author": {
+        "name": "Carlos Rodríguez",
+        "photo": "https://via.placeholder.com/80x80/ff6600/ffffff?text=CR",
+        "initials": "CR"
+      },
+      "date": "2024-12-01",
+      "relative_date": "Hace 1 mes",
+      "source": "Google"
+    },
+    {
+      "id": 3,
+      "text": "Empecé sin experiencia y con miedo, pero el equipo de IMPERIUM me ha ayudado desde el primer día. Adaptan los ejercicios a tu nivel y siempre te motivan a superarte. Ya no puedo vivir sin mis entrenamientos aquí.",
+      "rating": 5,
+      "author": {
+        "name": "Ana López",
+        "photo": "https://via.placeholder.com/80x80/ff6600/ffffff?text=AL",
+        "initials": "AL"
+      },
+      "date": "2024-12-08",
+      "relative_date": "Hace 3 semanas",
+      "source": "Google"
+    },
+    {
+      "id": 4,
+      "text": "Fantástico gimnasio con excelentes profesionales. Juande y Rubén son entrenadores de 10, siempre pendientes de la técnica y motivándote constantemente. Las instalaciones son top y el ambiente es único.",
+      "rating": 5,
+      "author": {
+        "name": "David Martín",
+        "photo": "https://via.placeholder.com/80x80/ff6600/ffffff?text=DM",
+        "initials": "DM"
+      },
+      "date": "2024-12-22",
+      "relative_date": "Hace 1 semana",
+      "source": "Google"
+    },
+    {
+      "id": 5,
+      "text": "Después de probar varios gimnasios, IMPERIUM es sin duda el mejor. La atención personalizada, las instalaciones impecables y sobre todo, los resultados que he conseguido en tan poco tiempo. ¡100% recomendable!",
+      "rating": 5,
+      "author": {
+        "name": "Laura Fernández",
+        "photo": "https://via.placeholder.com/80x80/ff6600/ffffff?text=LF",
+        "initials": "LF"
+      },
+      "date": "2024-12-10",
+      "relative_date": "Hace 2 semanas",
+      "source": "Google"
+    },
+    {
+      "id": 6,
+      "text": "Un sitio increíble para entrenar. Los coaches se preocupan realmente por tu progreso y técnica. El ambiente es muy motivador y las clases nunca se hacen aburridas. Es como una gran familia fitness.",
+      "rating": 5,
+      "author": {
+        "name": "Javier Moreno",
+        "photo": "https://via.placeholder.com/80x80/ff6600/ffffff?text=JM",
+        "initials": "JM"
+      },
+      "date": "2024-11-28",
+      "relative_date": "Hace 1 mes",
+      "source": "Google"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2024-12-30",
+    "source": "manual_collection",
+    "gym_info": {
+      "name": "IMPERIUM Crosstraining",
+      "address": "C.C Neptuno, Calle Arabial 45, Local 79, 18004 Granada",
+      "phone": "651 01 33 21"
+    }
+  }
+}

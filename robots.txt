@@ -1,0 +1,81 @@
+# robots.txt - Subir a la raíz de tu web
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: *.pdf$
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://imperiumcrosstraining.es/sitemap.xml
+
+# sitemap.xml - Crear este archivo en la raíz
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://imperiumcrosstraining.es/img/logo_color.png</image:loc>
+      <image:title>IMPERIUM Crosstraining Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://imperiumcrosstraining.es/img/grupal.jpeg</image:loc>
+      <image:title>Clases grupales crosstraining Granada</image:title>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#about</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#services</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#trainers</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#horarios</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#pricing</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#contact</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <url>
+    <loc>https://imperiumcrosstraining.es/#location</loc>
+    <lastmod>2025-07-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
