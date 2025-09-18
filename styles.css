@@ -314,7 +314,7 @@
         }
 
         .btn {
-    display: inline-block;
+   display: inline-block;
     padding: 14px 28px;
     background-color: var(--primary);
     color: var(--light);
@@ -326,9 +326,14 @@
     transition: all 0.3s ease;
     border: 2px solid var(--primary);
     min-width: 180px;
-    position: relative; /* Añadido para posicionamiento relativo */
-    overflow: hidden; /* Añadido para contener el pseudo-elemento */
-    z-index: 1; /* Asegura que el texto esté por encima */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    /* AGREGAR: Flexbox para centrar contenido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
 }
 
 
@@ -840,20 +845,20 @@
 }
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr;
+        gap: 20px;
         }
 
         .pricing-card {
             background-color: var(--light);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 40px 30px;
-            text-align: center;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+			border-radius: 15px;
+			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+			transition: all 0.3s ease;
+			position: relative;
+			padding: 40px 30px;
+			text-align: center;
+			border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .pricing-card.highlighted {
@@ -2041,7 +2046,18 @@
         font-size: 1rem;
     }
 }
-
+@media (max-width: 360px) {
+    .hero-buttons {
+        padding: 0 15px;
+    }
+    
+    .hero-buttons .btn {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+        max-width: 240px;
+        border-radius: 40px;
+    }
+}
 /* Pantallas extra pequeñas */
 @media (max-width: 360px) {
 	.container {
@@ -2071,7 +2087,12 @@
         gap: 5px;
     }
 }
-
+@media (min-width: 1200px) {
+    .hero-buttons {
+        margin-left: 0; /* Quitar cualquier margen negativo */
+        justify-content: center;
+    }
+}
 /* 7. HEADER SCROLLED - AJUSTES RESPONSIVOS */
 header.scrolled .logo img {
     height: 40px;
@@ -3205,20 +3226,39 @@ body.dark-mode .social-desc {
 }
 
 .hero-buttons {
-    animation: fadeInUp 1s ease 0.4s both;
-	  display: flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 15px;
-     margin-top: 25px;
-	     margin-left: -129px;
+    margin-top: 25px;
     justify-content: center;
+    align-items: center;
 }
 @media (max-width: 768px) {
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
+        margin-top: 20px;
+        /* QUITAR: margin-left negativo que causa problemas */
+        margin-left: 0;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 0;
+        padding: 16px 24px;
+        font-size: 1rem;
+        min-width: 0; /* Resetear min-width */
+        /* Asegurar que el texto no se desborde */
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
     
+    /* Botón outline específico en móvil */
+    .hero-buttons .btn-outline {
+        margin-left: 0;
+        margin-top: 0;
+    }
     .btn {
         width: 100%;
         max-width: 280px;
@@ -6434,4 +6474,1291 @@ body.dark-mode .legal-info p {
 
 body.dark-mode .legal-info strong {
     color: var(--primary);
+}
+
+/* MEJORAS DEL HEADER - ICONOS Y TIPOGRAFÍA */
+
+/* 1. MEJORAS GENERALES DEL NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 60px; /* Aumentado de 50px */
+    flex-wrap: nowrap;
+    padding: 0 15px; /* Padding horizontal mejorado */
+}
+
+/* 2. MEJORAS DE LA NAVEGACIÓN - TAMAÑO DE LETRA */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem; /* Aumentado de 0.9rem */
+    transition: all 0.3s ease;
+    padding: 12px 16px; /* Aumentado el padding */
+    display: block;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+/* 3. MEJORAS DEL HAMBURGER - OCUPAR TODA LA PANTALLA */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--light);
+    font-size: 1.8rem; /* Aumentado de 1.5rem */
+    transition: all 0.3s ease;
+    z-index: 200;
+    min-width: 50px; /* Aumentado de 44px */
+    min-height: 50px; /* Aumentado de 44px */
+    padding: 10px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    /* Mejorar área de toque */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+.hamburger:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+/* 4. MEJORAS DEL THEME SWITCH */
+.theme-switch {
+    background: none;
+    border: none;
+    color: var(--light);
+    cursor: pointer;
+    font-size: 1.5rem; /* Aumentado de 1.2rem */
+    margin-left: 20px;
+    transition: all 0.3s ease;
+    min-width: 50px; /* Aumentado de 44px */
+    min-height: 50px; /* Aumentado de 44px */
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Mejorar área de toque */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-switch:hover {
+    color: var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(30deg) scale(1.05);
+}
+
+/* 5. MEJORAS DE LOGO */
+.logo img {
+    height: 50px; /* Aumentado de 45px */
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+.logo-text {
+    font-size: 1.2rem; /* Aumentado de 1.1rem */
+    font-weight: 800;
+    color: var(--primary);
+    margin-left: 12px; /* Aumentado de 10px */
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 6. MEJORAS RESPONSIVE - TABLETS */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 0 20px;
+        min-height: 55px;
+    }
+    
+    .nav-links li {
+        margin-left: 20px; /* Aumentado de 15px */
+    }
+    
+    .nav-links a {
+        font-size: 0.95rem; /* Aumentado de 0.85rem */
+        padding: 10px 14px; /* Aumentado el padding */
+    }
+    
+    .logo img {
+        height: 48px;
+    }
+    
+    .logo-text {
+        font-size: 1.1rem;
+    }
+}
+
+/* 7. MEJORAS RESPONSIVE - MÓVILES */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        font-size: 2rem; /* Aumentado para móvil */
+        min-width: 55px; /* Aumentado para mejor toque */
+        min-height: 55px;
+        margin-right: 10px;
+    }
+    
+    /* MENÚ MÓVIL OCUPANDO TODA LA PANTALLA */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw; /* TODA LA PANTALLA */
+        height: 100vh; /* TODA LA ALTURA */
+        background: linear-gradient(135deg, 
+            var(--secondary) 0%, 
+            rgba(26, 26, 26, 0.98) 50%,
+            var(--dark) 100%); /* Degradado mejorado */
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: flex-start; /* CAMBIO: de center a flex-start */
+        align-items: center;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 150;
+        padding: 100px 15px 30px; /* AJUSTADO: más padding top para el header */
+        /* Scroll mejorado */
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        /* Distribución del espacio */
+        gap: 8px; /* Espacio entre elementos */
+        box-sizing: border-box;
+    }
+    
+    .nav-links.active {
+        right: 0;
+        /* Efecto de entrada suave */
+        animation: slideInFromRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Animación de entrada del menú */
+    @keyframes slideInFromRight {
+        from {
+            right: -100vw;
+            opacity: 0;
+        }
+        to {
+            right: 0;
+            opacity: 1;
+        }
+    }
+    
+    .nav-links li {
+        margin: 8px 0; /* REDUCIDO: de 20px a 8px */
+        width: 100%;
+        max-width: 90%; /* Limitar ancho para evitar problemas */
+        text-align: center;
+        /* Animación mejorada */
+        opacity: 0;
+        transform: translateX(30px);
+        animation: slideInItems 0.4s ease forwards;
+        flex-shrink: 0; /* Evitar que se compriman */
+    }
+    
+    /* Animación escalonada para los elementos del menú */
+    .nav-links.active li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links.active li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links.active li:nth-child(4) { animation-delay: 0.4s; }
+    .nav-links.active li:nth-child(5) { animation-delay: 0.5s; }
+    .nav-links.active li:nth-child(6) { animation-delay: 0.6s; }
+    .nav-links.active li:nth-child(7) { animation-delay: 0.7s; }
+    .nav-links.active li:nth-child(8) { animation-delay: 0.8s; }
+    .nav-links.active li:nth-child(9) { animation-delay: 0.9s; }
+    .nav-links.active li:nth-child(10) { animation-delay: 1.0s; }
+
+    @keyframes slideInItems {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .nav-links a {
+        font-size: 1.1rem; /* REDUCIDO: de 1.4rem a 1.1rem */
+        font-weight: 700;
+        padding: 12px 20px; /* REDUCIDO: de 18px a 12px vertical */
+        border-radius: 10px;
+        margin: 4px 0; /* REDUCIDO: de 8px a 4px */
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        /* Área de toque optimizada */
+        min-height: 48px; /* REDUCIDO: de 60px a 48px */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* Texto responsivo */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a:active {
+        background: rgba(255, 102, 0, 0.2);
+        color: var(--primary);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+    }
+    
+    /* MEJORAS DEL HEADER CONTROLS */
+    .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 15px; /* Aumentado de 10px */
+        margin-left: auto;
+    }
+    
+    .theme-switch {
+        margin-left: 0; /* Resetear margen */
+        font-size: 1.6rem; /* Aumentado para móvil */
+        min-width: 55px;
+        min-height: 55px;
+    }
+    
+    /* MEJORAS DEL LOGO EN MÓVIL */
+    .logo img {
+        height: 40px; /* Mantener proporcional */
+    }
+    
+    .logo-text {
+        display: none; /* Mantener oculto en móvil */
+    }
+    
+    /* OVERLAY PARA PREVENIR SCROLL */
+    .nav-links.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: -1;
+    }
+}
+
+/* 8. MEJORAS RESPONSIVE - MÓVILES PEQUEÑOS */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 15px;
+        min-height: 50px;
+    }
+    
+    .hamburger {
+        min-width: 50px;
+        min-height: 50px;
+        font-size: 1.8rem;
+    }
+    
+    .theme-switch {
+        min-width: 50px;
+        min-height: 50px;
+        font-size: 1.4rem;
+    }
+    
+    .logo img {
+        height: 35px;
+    }
+    
+    /* AJUSTES ESPECÍFICOS PARA MENÚ MÓVIL PEQUEÑO */
+    .nav-links {
+        padding: 80px 10px 20px; /* Menos padding lateral */
+        gap: 5px; /* Menos espacio entre elementos */
+    }
+    
+    .nav-links li {
+        margin: 5px 0; /* Aún menos margen */
+        max-width: 95%;
+    }
+    
+    .nav-links a {
+        font-size: 1rem; /* Menor tamaño para pantallas pequeñas */
+        padding: 10px 16px; /* Padding reducido */
+        min-height: 44px; /* Altura mínima reducida */
+        letter-spacing: 0.5px; /* Menos espaciado */
+    }
+    
+    .header-controls {
+        gap: 8px; /* Menos espacio entre controles */
+    }
+}
+
+/* 8.5. MEJORAS ADICIONALES PARA CORRECCIÓN DE SCROLL */
+@media (max-width: 768px) {
+    /* Asegurar que el contenido del menú no se salga */
+    .nav-links {
+        /* Cálculo dinámico del contenido */
+        min-height: 100vh;
+        display: flex !important; /* Force flex */
+        flex-wrap: nowrap; /* No permitir wrap */
+    }
+    
+    /* Contenedor específico para los elementos del menú */
+    .nav-links::before {
+        content: '';
+        flex: 0 0 auto;
+        height: 20px; /* Espaciado superior */
+    }
+    
+    .nav-links::after {
+        content: '';
+        flex: 1 1 auto;
+        min-height: 20px; /* Espaciado inferior mínimo */
+    }
+    
+    /* Hacer que todos los elementos li se muestren */
+    .nav-links li {
+        flex: 0 0 auto; /* No comprimir ni expandir */
+        display: block !important;
+        visibility: visible !important;
+        position: relative;
+    }
+}
+
+/* 9. MEJORAS RESPONSIVE - PANTALLAS EXTRA PEQUEÑAS */
+@media (max-width: 360px) {
+    .navbar {
+        padding: 0 12px;
+    }
+    
+    .hamburger,
+    .theme-switch {
+        min-width: 45px;
+        min-height: 45px;
+        font-size: 1.6rem;
+    }
+    
+    .logo img {
+        height: 32px;
+    }
+    
+    .nav-links a {
+        font-size: 1.2rem;
+        padding: 15px 18px;
+        min-height: 52px;
+    }
+}
+
+/* 10. MEJORAS DE ACCESIBILIDAD */
+.hamburger:focus,
+.theme-switch:focus,
+.nav-links a:focus {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Estados de hover mejorados para desktop */
+@media (min-width: 769px) {
+    .nav-links a:hover {
+        color: var(--primary) !important;
+        text-shadow: 
+            1px 1px 3px rgba(0, 0, 0, 0.9),
+            0 0 8px rgba(255, 102, 0, 0.5),
+            0 0 12px rgba(255, 102, 0, 0.3);
+        transform: translateY(-1px);
+    }
+}
+
+/* 11. MEJORAS PARA HEADER SCROLLED */
+header.scrolled {
+    background-color: rgba(17, 17, 17, 0.95);
+    padding: 8px 0; /* Ligeramente reducido */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+header.scrolled .logo img {
+    height: 42px; /* Proporcionalmente reducido */
+}
+
+header.scrolled .logo-text {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    header.scrolled .logo img {
+        height: 38px;
+    }
+    
+    header.scrolled .hamburger,
+    header.scrolled .theme-switch {
+        min-width: 52px;
+        min-height: 52px;
+    }
+}
+
+/* 12. MEJORAS DE PERFORMANCE */
+.nav-links {
+    will-change: transform;
+    transform: translateZ(0); /* Activar aceleración de hardware */
+}
+
+.hamburger,
+.theme-switch,
+.nav-links a {
+    will-change: transform, background-color;
+    transform: translateZ(0);
+}
+
+/* 13. MEJORAS PARA MODO OSCURO */
+body.dark-mode .nav-links {
+    background: linear-gradient(135deg, 
+        rgba(42, 42, 42, 0.98) 0%, 
+        rgba(17, 17, 17, 0.98) 50%,
+        rgba(0, 0, 0, 0.98) 100%);
+}
+
+body.dark-mode .nav-links a {
+    background: rgba(248, 248, 248, 0.05);
+    border-color: rgba(248, 248, 248, 0.1);
+}
+
+body.dark-mode .nav-links a:hover {
+    background: rgba(255, 102, 0, 0.2);
+    color: var(--primary);
+}
+/* CORRECCIÓN COMPLETA DEL MENÚ MÓVIL - TODAS LAS OPCIONES VISIBLES */
+
+/* CORRECCIÓN PRINCIPAL PARA EL MENÚ MÓVIL */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, 
+            rgba(26, 26, 26, 0.98) 0%, 
+            rgba(17, 17, 17, 0.98) 100%);
+        backdrop-filter: blur(15px);
+        
+        /* FLEXBOX OPTIMIZADO */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* CENTRADO VERTICAL */
+        align-items: center;
+        
+        /* ESPACIADO CALCULADO PARA TODAS LAS OPCIONES */
+        padding: 60px 15px 40px;
+        gap: 0; /* Sin gap, usaremos margin en los li */
+        
+        /* SCROLL Y OVERFLOW */
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        
+        /* TRANSICIÓN */
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 150;
+        
+        /* BOX MODEL */
+        box-sizing: border-box;
+        
+        /* ASEGURAR QUE TODO EL CONTENIDO SEA VISIBLE */
+        min-height: 100vh;
+    }
+    
+    .nav-links.active {
+        right: 0;
+        animation: slideInMenu 0.5s ease-out;
+    }
+    
+    @keyframes slideInMenu {
+        from {
+            right: -100vw;
+            opacity: 0;
+        }
+        to {
+            right: 0;
+            opacity: 1;
+        }
+    }
+    
+    /* ELEMENTOS LI - DISTRIBUCIÓN UNIFORME */
+    .nav-links li {
+        /* ESPACIADO CALCULADO PARA 10 ELEMENTOS */
+        margin: 6px 0; /* Margen reducido pero suficiente */
+        width: 100%;
+        max-width: 320px; /* Ancho máximo para mejor legibilidad */
+        text-align: center;
+        
+        /* FLEXBOX ITEM */
+        flex: 0 0 auto; /* No comprimir ni expandir */
+        
+        /* VISIBILIDAD FORZADA */
+        display: block !important;
+        visibility: visible !important;
+        
+        /* ANIMACIÓN */
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    
+    /* ANIMACIÓN ESCALONADA PARA 10 ELEMENTOS */
+    .nav-links.active li {
+        animation: slideInItems 0.4s ease forwards;
+    }
+    
+    .nav-links.active li:nth-child(1) { animation-delay: 0.05s; }
+    .nav-links.active li:nth-child(2) { animation-delay: 0.10s; }
+    .nav-links.active li:nth-child(3) { animation-delay: 0.15s; }
+    .nav-links.active li:nth-child(4) { animation-delay: 0.20s; }
+    .nav-links.active li:nth-child(5) { animation-delay: 0.25s; }
+    .nav-links.active li:nth-child(6) { animation-delay: 0.30s; }
+    .nav-links.active li:nth-child(7) { animation-delay: 0.35s; }
+    .nav-links.active li:nth-child(8) { animation-delay: 0.40s; }
+    .nav-links.active li:nth-child(9) { animation-delay: 0.45s; }
+    .nav-links.active li:nth-child(10) { animation-delay: 0.50s; }
+    
+    @keyframes slideInItems {
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    /* ENLACES - TAMAÑO OPTIMIZADO */
+    .nav-links a {
+        /* TIPOGRAFÍA */
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: white;
+        text-decoration: none;
+        
+        /* ESPACIADO */
+        padding: 12px 20px;
+        margin: 0;
+        
+        /* DISEÑO */
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        
+        /* FLEXBOX */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        /* DIMENSIONES */
+        min-height: 44px; /* Tamaño mínimo para toque */
+        width: 100%;
+        
+        /* TRANSICIONES */
+        transition: all 0.3s ease;
+        
+        /* BOX MODEL */
+        box-sizing: border-box;
+        
+        /* TEXTO */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a:active,
+    .nav-links a:focus {
+        background: rgba(255, 102, 0, 0.2);
+        border-color: rgba(255, 102, 0, 0.4);
+        color: var(--primary, #ff6600);
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 5px 20px rgba(255, 102, 0, 0.25);
+    }
+}
+
+/* AJUSTES ESPECÍFICOS PARA PANTALLAS MUY PEQUEÑAS */
+@media (max-width: 480px) {
+    .nav-links {
+        padding: 50px 12px 30px; /* Menos padding */
+    }
+    
+    .nav-links li {
+        margin: 4px 0; /* Margen aún menor */
+        max-width: 300px;
+    }
+    
+    .nav-links a {
+        font-size: 1rem; /* Texto un poco menor */
+        padding: 10px 16px;
+        min-height: 42px;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* AJUSTES PARA PANTALLAS MUY PEQUEÑAS (iPhone SE, etc.) */
+@media (max-width: 375px) {
+    .nav-links {
+        padding: 45px 10px 25px;
+    }
+    
+    .nav-links li {
+        margin: 3px 0; /* Margen mínimo */
+        max-width: 280px;
+    }
+    
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 9px 14px;
+        min-height: 40px;
+        letter-spacing: 0.3px;
+    }
+}
+
+/* AJUSTES PARA DISPOSITIVOS CON PANTALLA MUY CORTA (landscape phones) */
+@media (max-width: 768px) and (max-height: 500px) {
+    .nav-links {
+        justify-content: flex-start; /* Cambiar a flex-start */
+        padding: 20px 15px 15px; /* Padding reducido */
+        gap: 2px; /* Espacio mínimo entre elementos */
+    }
+    
+    .nav-links li {
+        margin: 2px 0; /* Margen muy reducido */
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        min-height: 36px;
+    }
+}
+
+/* PREVENCIÓN DE SCROLL DEL BODY CUANDO EL MENÚ ESTÁ ABIERTO */
+body.menu-open {
+    overflow: hidden !important;
+    height: 100vh;
+}
+@media (max-width: 768px) {
+    /* Contenedor principal de tarifas */
+    .pricing-table .price-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Contenedor de cada tarjeta de precio */
+    .pricing-table .price-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra los elementos */
+        padding: 20px 15px; /* Ajusta el padding para móviles */
+    }
+
+    /* Título de la tarifa */
+    .pricing-table .price-box h3 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* Contenedor del precio y el texto */
+    .pricing-table .price-box .price {
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .pricing-table .price-box .price h4 {
+        font-size: 2.2rem;
+        margin: 0;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .pricing-table .price-box .price p {
+        font-size: 1.2rem;
+        margin-left: 5px;
+        align-self: flex-end; /* Alinea el texto a la parte inferior del precio */
+    }
+	 /* Regla para alinear el precio y el texto en la misma línea */
+    .pricing-price {
+        display: flex;
+        align-items: flex-end; /* Alinea el texto en la parte inferior del precio */
+        justify-content: center; /* Centra el grupo de precio y texto */
+        gap: 5px; /* Añade un pequeño espacio entre el precio y el texto */
+        padding: 10px; /* Ajusta el padding para que no se pegue a los bordes */
+    }
+
+    /* Estilos para el texto del precio (el número) */
+    .pricing-price {
+        font-size: 2.5rem; /* Aumenta o disminuye el tamaño del número si es necesario */
+        line-height: 1;
+        font-weight: bold;
+    }
+    
+    /* Estilos para el texto de la descripción (días/semana) */
+    .pricing-price span {
+        font-size: 1rem; /* Ajusta el tamaño del texto "2 días semana" */
+        text-transform: uppercase;
+        font-weight: 500;
+        line-height: 1.2;
+    }
+
+    /* Ajustes generales de las tarjetas para móviles */
+    .pricing-card {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .pricing-card h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+}
+}
+Nota: Estas son solo suger
+/* OVERLAY PARA MEJORAR EL CONTRASTE */
+.nav-links::before {
+    /* content: ''; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* CORRECCIÓN PARA Z-INDEX DEL HEADER */
+@media (max-width: 768px) {
+    header {
+        z-index: 200; /* Más alto que el menú */
+    }
+    
+    .hamburger {
+        z-index: 250; /* El más alto para estar siempre accesible */
+        position: relative;
+    }
+}
+
+/* DEBUG - ELIMINAR EN PRODUCCIÓN */
+/*
+.nav-links li {
+    border: 1px solid red;
+}
+.nav-links a {
+    border: 1px solid blue;
+}
+*/
+
+/* ===== PRICING SECTION REDISEÑADA ===== */
+.pricing {
+    background-color: var(--light);
+    padding: 100px 0;
+}
+
+/* Grid de tarjetas - igual que trainers */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+/* Tarjetas individuales */
+.pricing-card {
+    background-color: var(--light);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    position: relative;
+    padding: 35px 30px 30px;
+    text-align: center;
+    border: 2px solid transparent;
+    min-height: 580px; /* Altura mínima consistente */
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary);
+}
+
+/* Tarjeta destacada (Popular) */
+.pricing-card.featured {
+    border: 3px solid var(--primary);
+    transform: scale(1.05);
+    background: linear-gradient(135deg, var(--light) 0%, #fff5f0 100%);
+}
+
+.pricing-card.featured:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* Badge "Popular" */
+.pricing-badge {
+    position: absolute;
+    top: 15px;
+    right: -15px;
+    background: var(--primary);
+    color: var(--light);
+    padding: 8px 25px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transform: rotate(10deg);
+    box-shadow: 0 3px 10px rgba(255, 102, 0, 0.3);
+    z-index: 2;
+}
+
+/* Icono principal */
+.pricing-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--light);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.2rem;
+    margin: 0 auto 25px;
+    box-shadow: 0 10px 25px rgba(255, 102, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.pricing-card:hover .pricing-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 15px 30px rgba(255, 102, 0, 0.4);
+}
+
+/* Título */
+.pricing-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pricing-card.featured .pricing-title {
+    color: var(--primary);
+}
+
+/* Descripción */
+.pricing-description {
+    margin-bottom: 25px;
+    flex-grow: 0;
+}
+
+.pricing-description p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Opciones de precios */
+.pricing-options {
+    margin-bottom: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pricing-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.pricing-option:hover {
+    background: rgba(255, 102, 0, 0.05);
+    border-color: rgba(255, 102, 0, 0.2);
+    transform: translateX(5px);
+}
+
+.pricing-option.highlighted {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--light);
+    border-color: var(--primary);
+    font-weight: 600;
+}
+
+.pricing-option.highlighted:hover {
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 102, 0, 0.3);
+}
+
+.price-amount {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.pricing-option.highlighted .price-amount {
+    color: var(--light);
+}
+
+.price-frequency {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pricing-option.highlighted .price-frequency {
+    color: var(--light);
+}
+
+/* Features/Características */
+.pricing-features {
+    margin-top: auto; /* Empujar hacia abajo */
+    padding-top: 20px;
+    border-top: 2px dashed rgba(0, 0, 0, 0.1);
+}
+
+.pricing-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: var(--text);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.pricing-features li:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+.pricing-features li i {
+    color: var(--primary);
+    margin-right: 10px;
+    font-size: 0.8rem;
+    width: 16px;
+    text-align: center;
+}
+
+/* Call to Action final */
+.pricing-cta {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 20px;
+    color: var(--light);
+    margin-top: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-cta::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.pricing-cta h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+}
+
+.pricing-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pricing-cta-btn {
+    background: var(--light);
+    color: var(--primary);
+    border: 3px solid var(--light);
+    padding: 18px 40px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+}
+
+.pricing-cta-btn:hover {
+    background: transparent;
+    color: var(--light);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.pricing-cta-btn i {
+    font-size: 1.2rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .pricing-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+    }
+    
+    .pricing-card {
+        padding: 30px 25px 25px;
+        min-height: 550px;
+    }
+    
+    .pricing-card.featured {
+        transform: none;
+    }
+    
+    .pricing-card.featured:hover {
+        transform: translateY(-10px);
+    }
+}
+
+/* Móviles */
+@media (max-width: 768px) {
+    .pricing {
+        padding: 80px 0;
+    }
+    
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .pricing-card {
+        padding: 25px 20px 20px;
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+    
+    .pricing-card.featured {
+        transform: none;
+        margin-bottom: 20px;
+    }
+    
+    .pricing-icon {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    
+    .pricing-title {
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+    }
+    
+    .pricing-description p {
+        font-size: 0.9rem;
+    }
+    
+    .pricing-options {
+        gap: 10px;
+    }
+    
+    .pricing-option {
+        padding: 10px 15px;
+    }
+    
+    .price-amount {
+        font-size: 1.2rem;
+    }
+    
+    .price-frequency {
+        font-size: 0.8rem;
+    }
+    
+    .pricing-features li {
+        font-size: 0.85rem;
+        padding: 6px 0;
+    }
+    
+    .pricing-cta {
+        padding: 40px 20px;
+        margin-top: 30px;
+    }
+    
+    .pricing-cta h3 {
+        font-size: 1.6rem;
+    }
+    
+    .pricing-cta p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+    
+    .pricing-cta-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        gap: 10px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .pricing-card {
+        padding: 20px 15px 15px;
+    }
+    
+    .pricing-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .pricing-title {
+        font-size: 1.3rem;
+    }
+    
+    .pricing-badge {
+        font-size: 0.7rem;
+        padding: 6px 20px;
+    }
+    
+    .pricing-cta {
+        padding: 30px 15px;
+    }
+    
+    .pricing-cta h3 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+    
+    .pricing-cta p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    
+    .pricing-cta-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+}
+
+/* ===== MEJORAS VISUALES ADICIONALES ===== */
+
+/* Animación de entrada */
+.pricing-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: pricingFadeIn 0.6s ease forwards;
+}
+
+.pricing-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.pricing-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes pricingFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos de hover mejorados */
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.pricing-card:hover::before {
+    transform: scaleX(1);
+}
+
+.pricing-card.featured::before {
+    transform: scaleX(1);
+}
+
+/* Modo oscuro */
+body.dark-mode .pricing-card {
+    background-color: var(--secondary);
+    border-color: rgba(255, 102, 0, 0.2);
+}
+
+body.dark-mode .pricing-card.featured {
+    background: linear-gradient(135deg, var(--secondary) 0%, rgba(42, 42, 42, 0.8) 100%);
+}
+
+body.dark-mode .pricing-title {
+    color: var(--dark);
+}
+
+body.dark-mode .pricing-description p {
+    color: rgba(248, 248, 248, 0.8);
+}
+
+body.dark-mode .pricing-option {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .price-frequency {
+    color: rgba(248, 248, 248, 0.9);
+}
+
+body.dark-mode .pricing-features li {
+    color: rgba(248, 248, 248, 0.9);
 }

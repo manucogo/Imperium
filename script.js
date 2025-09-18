@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+			document.body.classList.toggle('menu-open');
             
             // Cambiar ícono del hamburger
             const icon = hamburger.querySelector('i');
@@ -34,6 +35,17 @@ document.addEventListener("DOMContentLoaded", function() {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
             }
+        });
+		navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    const icon = hamburger.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
         });
     }
 
@@ -1910,3 +1922,237 @@ window.addEventListener('resize', () => {
 });
 // Ejecutar debug en desarrollo (comentar en producción)
 // setTimeout(debugNutritionSection, 2000);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+    
+    // Verificar que los elementos existen
+    if (!hamburger || !navLinks) {
+        console.error('Elementos del menú móvil no encontrados');
+        return;
+    }
+    
+    // Estado del menú
+    let isMenuOpen = false;
+    
+    // Función para abrir el menú
+    function openMenu() {
+        console.log('Abriendo menú móvil');
+        isMenuOpen = true;
+        
+        // Cambiar clases
+        navLinks.classList.add('active');
+        hamburger.classList.add('active');
+        body.classList.add('menu-open');
+        
+        // Cambiar icono
+        const icon = hamburger.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
+        
+        // Prevenir scroll del body
+        body.style.overflow = 'hidden';
+        body.style.position = 'fixed';
+        body.style.width = '100%';
+        
+        // Forzar recalculo de elementos
+        setTimeout(() => {
+            const menuItems = navLinks.querySelectorAll('li');
+            console.log(`Menú abierto con ${menuItems.length} elementos`);
+            
+            // Verificar que todos los elementos son visibles
+            menuItems.forEach((item, index) => {
+                item.style.display = 'block';
+                item.style.visibility = 'visible';
+                console.log(`Elemento ${index + 1}:`, item.querySelector('a').textContent);
+            });
+        }, 100);
+    }
+    
+    // Función para cerrar el menú
+    function closeMenu() {
+        console.log('Cerrando menú móvil');
+        isMenuOpen = false;
+        
+        // Cambiar clases
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+        body.classList.remove('menu-open');
+        
+        // Cambiar icono
+        const icon = hamburger.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+        
+        // Restaurar scroll del body
+        body.style.overflow = '';
+        body.style.position = '';
+        body.style.width = '';
+    }
+    
+    // Toggle del menú
+    function toggleMenu() {
+        if (isMenuOpen) {
+            closeMenu();
+        } else {
+            openMenu();
+        }
+    }
+    
+    // Event listener para el hamburger
+    hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Click en hamburger');
+        toggleMenu();
+    });
+    
+    // Cerrar menú al hacer click en enlaces
+    const menuLinks = navLinks.querySelectorAll('a');
+    menuLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            console.log('Click en enlace del menú:', this.textContent);
+            // Dar tiempo para que funcione el scroll suave
+            setTimeout(closeMenu, 100);
+        });
+    });
+    
+    // Cerrar menú con tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && isMenuOpen) {
+            console.log('ESC presionado - cerrando menú');
+            closeMenu();
+        }
+    });
+    
+    // Cerrar menú al redimensionar ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && isMenuOpen) {
+            console.log('Redimensión detectada - cerrando menú');
+            closeMenu();
+        }
+        
+        // Recalcular elementos del menú si está abierto
+        if (isMenuOpen) {
+            setTimeout(() => {
+                const menuItems = navLinks.querySelectorAll('li');
+                menuItems.forEach(item => {
+                    item.style.display = 'block';
+                    item.style.visibility = 'visible';
+                });
+            }, 100);
+        }
+    });
+    
+    // Prevenir scroll cuando el menú está abierto
+    document.addEventListener('touchmove', function(e) {
+        if (isMenuOpen && !navLinks.contains(e.target)) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Debug: función para verificar elementos del menú
+    window.debugMobileMenu = function() {
+        console.log('=== DEBUG MENÚ MÓVIL ===');
+        console.log('Hamburger:', !!hamburger);
+        console.log('Nav Links:', !!navLinks);
+        console.log('Menu abierto:', isMenuOpen);
+        console.log('Clases nav-links:', navLinks.className);
+        
+        const menuItems = navLinks.querySelectorAll('li');
+        console.log('Total elementos menú:', menuItems.length);
+        
+        menuItems.forEach((item, index) => {
+            const link = item.querySelector('a');
+            const display = window.getComputedStyle(item).display;
+            const visibility = window.getComputedStyle(item).visibility;
+            
+            console.log(`Elemento ${index + 1}:`, {
+                texto: link ? link.textContent : 'Sin texto',
+                display: display,
+                visibility: visibility,
+                visible: display !== 'none' && visibility !== 'hidden'
+            });
+        });
+        
+        // Información de viewport
+        console.log('Viewport:', {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            isMobile: window.innerWidth <= 768
+        });
+        
+        // Información del contenedor del menú
+        if (isMenuOpen) {
+            const rect = navLinks.getBoundingClientRect();
+            console.log('Posición menú:', {
+                top: rect.top,
+                left: rect.left,
+                width: rect.width,
+                height: rect.height,
+                right: rect.right,
+                bottom: rect.bottom
+            });
+        }
+    };
+    
+    // Función para forzar corrección del menú
+    window.fixMobileMenu = function() {
+        console.log('Aplicando corrección del menú móvil...');
+        
+        if (isMenuOpen) {
+            const menuItems = navLinks.querySelectorAll('li');
+            
+            menuItems.forEach((item, index) => {
+                // Forzar visibilidad
+                item.style.display = 'block !important';
+                item.style.visibility = 'visible !important';
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+                
+                // Aplicar animación
+                item.style.animation = `slideInItems 0.4s ease ${index * 0.05}s forwards`;
+                
+                console.log(`Elemento ${index + 1} corregido`);
+            });
+            
+            // Ajustar contenedor si es necesario
+            navLinks.style.display = 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.justifyContent = 'center';
+            navLinks.style.overflow = 'auto';
+            
+            console.log('Corrección aplicada');
+        } else {
+            console.log('El menú no está abierto');
+        }
+    };
+    
+    console.log('JavaScript del menú móvil cargado correctamente');
+});
+
+// Función adicional para manejar orientación en móviles
+window.addEventListener('orientationchange', function() {
+    setTimeout(() => {
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks && navLinks.classList.contains('active')) {
+            console.log('Cambio de orientación - recalculando menú');
+            
+            // Forzar recálculo
+            navLinks.style.height = '100vh';
+            
+            // Verificar elementos
+            const menuItems = navLinks.querySelectorAll('li');
+            menuItems.forEach(item => {
+                item.style.display = 'block';
+                item.style.visibility = 'visible';
+            });
+        }
+    }, 500); // Dar tiempo para el cambio de orientación
+});
