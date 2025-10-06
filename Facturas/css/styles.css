@@ -1,0 +1,1398 @@
+/* css/styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* Login Screen */
+.login-screen {
+    background: white;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-screen h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.btn {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #28a745, #20c997);
+}
+
+.btn-danger {
+    background: linear-gradient(45deg, #dc3545, #c82333);
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #ffc107, #e0a800);
+}
+
+.btn-info {
+    background: linear-gradient(45deg, #17a2b8, #138496);
+}
+
+/* Main App */
+.main-app {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Navigation */
+.nav-tabs {
+    display: flex;
+    background: #f8f9fa;
+    border-bottom: 3px solid #e9ecef;
+}
+
+.nav-tab {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.nav-tab:hover {
+    background: #e9ecef;
+    color: #333;
+}
+
+.nav-tab.active {
+    background: white;
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+.nav-tab i {
+    margin-right: 8px;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    padding: 40px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Forms */
+.form-container {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Tables */
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background: #667eea;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Messages */
+.message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.message.success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.message.error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.message.info {
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* User Card */
+.user-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-left: 4px solid #667eea;
+}
+
+.user-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.user-card p {
+    margin: 5px 0;
+    color: #666;
+}
+
+/* Search */
+.search-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.search-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+/* Logout */
+.logout-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 2px solid rgba(255,255,255,0.3);
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.logout-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-tabs {
+        flex-direction: column;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Factura Preview */
+.factura-preview {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 0;
+    min-height: 400px;
+    margin-top: 20px;
+}
+
+.factura {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.factura-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("logo.png");
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.empresa-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.empresa-info p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.factura-info {
+    text-align: right;
+    background: #e8f5e8;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.factura-info h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.factura-info p {
+    margin: 3px 0;
+    font-size: 14px;
+}
+
+.cliente-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+}
+
+.cliente-info h4 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.detalle-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.detalle-table th {
+    background: #e8f5e8;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+.detalle-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.detalle-table tr:hover {
+    background: #f8f9fa;
+}
+
+.totales {
+    margin-left: auto;
+    width: 300px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.totales table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.totales td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.totales .total-final {
+    background: #e8f5e8;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.no-data {
+    text-align: center;
+    padding: 50px;
+    color: #666;
+    font-size: 18px;
+}
+
+.hidden {
+    display: none;
+}
+.btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 2px;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.search-row {
+    display: flex;
+    align-items: end;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.search-row .form-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.search-row button {
+    height: fit-content;
+    white-space: nowrap;
+}
+
+/* Estilos para el switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #28a745;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Cambiar color de fondo para usuarios inactivos */
+.user-card.inactivo {
+    background-color: #f8d7da;
+    border-left-color: #dc3545;
+}
+
+/* Estilos adicionales para servicio personalizado */
+
+/* Campo de observaciones */
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.3s;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Indicador visual para servicio personalizado */
+.precio-personalizado {
+    background-color: #fff8dc !important;
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.1);
+}
+
+.precio-personalizado::placeholder {
+    color: #856404;
+    font-style: italic;
+}
+
+/* Animaciﾃｳn suave para mostrar/ocultar observaciones */
+#observacionesGroup,
+#observacionesGroup2 {
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Estilo para el optgroup personalizado */
+optgroup[label="PERSONALIZADO"] {
+    background-color: #fff3e0;
+    font-weight: bold;
+}
+
+optgroup[label="PERSONALIZADO"] option {
+    background-color: #fff8e1;
+    color: #e65100;
+    font-weight: normal;
+}
+
+/* Badge para servicios personalizados en las listas */
+.servicio-personalizado-badge {
+    background: linear-gradient(45deg, #ff9800, #ffc107);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+/* Estilo para facturas personalizadas en las tablas */
+.factura-personalizada {
+    background-color: #fff8e1 !important;
+    border-left: 4px solid #ff9800;
+}
+
+/* Tooltip para explicar el servicio personalizado */
+.tooltip-personalizado {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip-personalizado::after {
+    content: "Permite establecer precio y descripciﾃｳn personalizados";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1000;
+}
+
+.tooltip-personalizado:hover::after {
+    opacity: 1;
+}
+
+.factura-personalizada {
+    background-color: #fff8e1 !important;
+    border-left: 4px solid #ff9800;
+}
+
+.factura-personalizada:hover {
+    background-color: #fff3e0 !important;
+}
+
+.servicio-personalizado-badge {
+    background: linear-gradient(45deg, #ff9800, #ffc107);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Estilo para campos de precio personalizados */
+.precio-personalizado {
+    background-color: #fff8dc !important;
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.2);
+}
+
+.precio-personalizado:focus {
+    border-color: #ff9800 !important;
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.2);
+}
+
+/* Animaciﾃｳn para mostrar/ocultar campos de observaciones */
+.observaciones-animate {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        max-height: 200px;
+        transform: translateY(0);
+    }
+}
+
+/* Indicador visual en el formulario cuando estﾃ｡ en modo personalizado */
+.formulario-personalizado {
+    border-left: 4px solid #ff9800;
+    background-color: rgba(255, 152, 0, 0.05);
+    padding-left: 15px;
+}
+
+/* Tooltip mejorado para servicios personalizados */
+.tooltip-personalizado {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip-personalizado:hover::before {
+    content: "庁";
+    position: absolute;
+    top: -25px;
+    left: -5px;
+    font-size: 16px;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-2px); }
+}
+
+/* Estilo para descripciones largas truncadas */
+.descripcion-truncada {
+    cursor: pointer;
+    color: #0066cc;
+    text-decoration: underline dotted;
+}
+
+.descripcion-truncada:hover {
+    color: #004499;
+    text-decoration: underline solid;
+}
+
+
+/* ===== RESPONSIVE DESIGN PARA Mﾃ天ILES ===== */
+@media screen and (max-width: 768px) {
+    
+    /* NAVEGACIﾃ哲 DE PESTAﾃ羨S */
+    .nav-tabs {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-tab {
+        padding: 15px 10px;
+        font-size: 14px;
+        border-bottom: 1px solid #e9ecef;
+        border-left: 3px solid transparent;
+    }
+    
+    .nav-tab.active {
+        border-left-color: #667eea;
+        border-bottom-color: transparent;
+    }
+    
+    /* CONTENEDOR PRINCIPAL */
+    .container {
+        padding: 10px;
+    }
+    
+    .tab-content {
+        padding: 20px 15px;
+    }
+    
+    /* FORMULARIOS Mﾃ天ILES */
+    .search-container {
+        padding: 15px;
+    }
+    
+    .search-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .search-row .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .search-row button {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    /* TARJETAS DE USUARIO Mﾃ天ILES */
+    .user-card {
+        margin-bottom: 15px;
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .user-card h3 {
+        font-size: 16px;
+        line-height: 1.3;
+        margin-bottom: 8px;
+    }
+    
+    /* TABLAS RESPONSIVE */
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 8px;
+    }
+    
+    .table {
+        min-width: 600px;
+        font-size: 13px;
+    }
+    
+    .table th, .table td {
+        padding: 8px 6px;
+        white-space: nowrap;
+    }
+    
+    /* VISTA DE TARJETAS PARA FACTURAS EN Mﾃ天IL */
+    .facturas-mobile {
+        display: block;
+    }
+    
+    .facturas-desktop {
+        display: none;
+    }
+    
+    .factura-card-mobile {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        padding: 12px;
+        position: relative;
+    }
+    
+    .factura-card-mobile.factura-personalizada {
+        border-left: 4px solid #ff9800;
+        background-color: #fff8e1;
+    }
+    
+    .factura-number {
+        font-size: 12px;
+        color: #6c757d;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .factura-service {
+        font-size: 14px;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 8px;
+        line-height: 1.3;
+    }
+    
+    .factura-details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .factura-price {
+        font-size: 16px;
+        font-weight: bold;
+        color: #28a745;
+    }
+    
+    .factura-date {
+        font-size: 12px;
+        color: #6c757d;
+    }
+    
+    .factura-payment {
+        font-size: 12px;
+        background: #f8f9fa;
+        padding: 2px 8px;
+        border-radius: 12px;
+        color: #495057;
+    }
+    
+    /* BOTONES Mﾃ天ILES */
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+        border-radius: 6px;
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+    
+    .btn-sm {
+        padding: 8px 12px;
+        font-size: 12px;
+        min-height: 36px;
+    }
+    
+    /* ACCIONES DE USUARIO EN Mﾃ天IL */
+    .user-actions-mobile {
+        display: flex;
+        gap: 8px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    
+    .user-actions-mobile .btn {
+        flex: 1;
+        min-width: 0;
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
+    /* SWITCH Mﾃ天IL */
+    .switch {
+        transform: scale(0.8);
+    }
+    
+    /* FORMULARIOS DE FACTURA Mﾃ天ILES */
+    .form-container {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* CAMPOS DE TEXTO Y SELECT */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px; /* Evita zoom en iOS */
+        padding: 12px;
+        border-radius: 6px;
+    }
+    
+    .form-group textarea {
+        min-height: 80px;
+        resize: vertical;
+    }
+    
+    /* BADGES Mﾃ天ILES */
+    .servicio-personalizado-badge {
+        font-size: 9px;
+        padding: 1px 5px;
+        margin-left: 3px;
+    }
+    
+    /* PESTAﾃ羨 FACTURAS - OPTIMIZACIﾃ哲 Mﾃ天IL */
+    .factura-preview {
+        font-size: 12px;
+        padding: 10px;
+    }
+    
+    .factura {
+        padding: 15px;
+    }
+    
+    .factura-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .logo-section {
+        justify-content: center;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+        font-size: 16px;
+    }
+    
+    .empresa-info h3 {
+        font-size: 16px;
+    }
+    
+    .empresa-info p {
+        font-size: 12px;
+    }
+    
+    .factura-info h2 {
+        font-size: 20px;
+    }
+    
+    .detalle-table {
+        font-size: 11px;
+    }
+    
+    .detalle-table th,
+    .detalle-table td {
+        padding: 8px 4px;
+    }
+    
+    .totales {
+        width: 100%;
+        margin: 20px 0 0 0;
+    }
+    
+    /* MENSAJES Mﾃ天ILES */
+    .message {
+        padding: 12px;
+        font-size: 13px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+    }
+    
+    /* MODAL Mﾃ天IL */
+    .modal-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.7);
+        z-index: 1000;
+        padding: 20px 10px;
+        overflow-y: auto;
+    }
+    
+    .modal-content-mobile {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin: auto;
+        max-width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    /* HEADER Mﾃ天IL */
+    .header {
+        padding: 20px 15px;
+        text-align: center;
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+        margin-bottom: 8px;
+    }
+    
+    .header p {
+        font-size: 1em;
+    }
+    
+    .logout-btn {
+        position: static;
+        margin-top: 15px;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    /* GRID RESPONSIVO PARA ESTADﾃ拘TICAS */
+    .stats-grid-mobile {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+    }
+    
+    .stat-card-mobile {
+        background: white;
+        padding: 12px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .stat-value-mobile {
+        font-size: 18px;
+        font-weight: bold;
+        color: #007bff;
+        display: block;
+    }
+    
+    .stat-label-mobile {
+        font-size: 11px;
+        color: #6c757d;
+        margin-top: 2px;
+    }
+    
+    /* SCROLL HORIZONTAL SUAVE */
+    .horizontal-scroll {
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 2px;
+    }
+    
+    .horizontal-scroll::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 2px;
+    }
+    
+    /* OCULTAR ELEMENTOS NO ESENCIALES EN Mﾃ天IL */
+    .desktop-only {
+        display: none;
+    }
+    
+    /* TOOLTIP Mﾃ天IL */
+    .tooltip-mobile {
+        position: relative;
+    }
+    
+    .tooltip-mobile:active::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.9);
+        color: white;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 1000;
+        max-width: 200px;
+        white-space: normal;
+    }
+}
+
+/* TABLET (768px - 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .form-row {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .nav-tabs {
+        flex-direction: row;
+    }
+    
+    .table {
+        font-size: 14px;
+    }
+    
+    .facturas-mobile {
+        display: none;
+    }
+    
+    .facturas-desktop {
+        display: block;
+    }
+}
+
+/* DESKTOP (1025px+) */
+@media screen and (min-width: 1025px) {
+    .facturas-mobile {
+        display: none;
+    }
+    
+    .facturas-desktop {
+        display: block;
+    }
+    
+    .desktop-only {
+        display: block;
+    }
+}
+/* Clases para mostrar/ocultar contenido segﾃｺn dispositivo */
+@media screen and (max-width: 768px) {
+    .mobile-only { 
+        display: inline !important; 
+    }
+    
+    .desktop-only { 
+        display: none !important; 
+    }
+    
+    /* Mejorar touch targets */
+    button, input, select, textarea {
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+    
+    /* Evitar zoom en inputs en iOS */
+    input, select, textarea {
+        font-size: 16px;
+    }
+    
+    /* Mejorar scroll en tablas */
+    .table-container {
+        -webkit-overflow-scrolling: touch;
+        border-radius: 0;
+    }
+    
+    /* Header mﾃｳvil mﾃ｡s compacto */
+    .header {
+        position: relative;
+        padding: 15px 10px;
+    }
+    
+    .logout-btn {
+        position: static;
+        display: block;
+        margin: 10px auto 0;
+        width: auto;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+    
+    /* Mensajes mﾃ｡s compactos */
+    .message {
+        padding: 10px;
+        margin-bottom: 10px;
+        font-size: 13px;
+    }
+    
+    /* Formulario de nueva factura mﾃｳvil */
+    #nuevaFacturaForm {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+    
+    #nuevaFacturaForm .form-row {
+        gap: 10px;
+    }
+    
+    #nuevaFacturaForm .btn {
+        margin: 5px 0;
+        width: 100%;
+    }
+    
+    /* Vista previa de factura mﾃｳvil */
+    .factura-preview {
+        margin-top: 15px;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .factura-preview .no-data {
+        padding: 30px 15px;
+        font-size: 14px;
+    }
+    
+    /* Optimizar inputs de fecha y nﾃｺmero */
+    input[type="date"],
+    input[type="month"],
+    input[type="number"] {
+        appearance: none;
+        -webkit-appearance: none;
+    }
+    
+    /* Mejorar contraste en modo oscuro */
+    @media (prefers-color-scheme: dark) {
+        .user-card {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-color: #4a5568;
+        }
+        
+        .stat-card-mobile {
+            background: #4a5568;
+            color: #e2e8f0;
+        }
+        
+        .factura-card-mobile {
+            background: #2d3748;
+            border-color: #4a5568;
+            color: #e2e8f0;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .mobile-only { 
+        display: none !important; 
+    }
+    
+    .desktop-only { 
+        display: inline !important; 
+    }
+}
+
+/* Orientaciﾃｳn horizontal en mﾃｳviles */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .nav-tabs {
+        flex-direction: row;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-tab {
+        white-space: nowrap;
+        min-width: 120px;
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+    
+    .stats-grid-mobile {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .user-actions-mobile {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* Dispositivos muy pequeﾃｱos (menos de 320px) */
+@media screen and (max-width: 320px) {
+    .container {
+        padding: 5px;
+    }
+    
+    .tab-content {
+        padding: 10px;
+    }
+    
+    .user-card {
+        padding: 10px;
+    }
+    
+    .btn {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    .stats-grid-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 10px;
+    }
+}
+
+/* Mejoras para accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible mejorado para navegaciﾃｳn por teclado */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+#formNuevaFactura .form-row {
+grid-template-columns: 1fr;
+}
+#formNuevaFactura button {
+width: 100%;
+margin-top: 10px;
+}
+.facturas-desktop { display: none; }
+.facturas-mobile { display: block; }
+
+
+tr {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+}
+tr {
+    width: 300px;
+    height: 100%;
+    position: relative;
+    display: grid;
+}
+}
+
+
+/* Por defecto, ocultamos la vista mｨｮvil en desktop */
+.facturas-mobile { display: none; }
+
+
+/* Estilos de observaciones personalizadas tambiｨｦn aplicados al grupo 2 */
+#observacionesGroup2 {
+transition: all 0.3s ease-in-out;
+overflow: hidden;
+}
+
+
+/* Para resaltar campos personalizados en renovaciones */
+#formNuevaFactura .precio-personalizado {
+background-color: #fff8dc !important;
+border-color: #ffc107 !important;
+}
+
