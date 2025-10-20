@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrossFit Granada | IMPERIUM Crosstraining - Mejor Box CrossFit 2025</title>
+    <meta name="description" content="El mejor gimnasio CrossFit de Granada. Entrenadores certificados, clases desde 55€/mes, parking gratis 2h. 5 estrellas Google.">
+    <meta name="keywords" content="crossfit granada, gimnasio crossfit granada, box crossfit granada, crossfit neptuno, crossfit arabial">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="CrossFit Granada | IMPERIUM - Box CrossFit 2025">
+    <meta property="og:description" content="Box de CrossFit en Granada con entrenadores certificados. Parking gratuito en C.C Neptuno.">
+    <meta property="og:image" content="https://imperiumcrosstraining.es/img/crossfit-granada-og.jpg">
+    
+    <link rel="canonical" href="https://imperiumcrosstraining.es/crossfit-granada/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --secondary-color: #1a1a1a;
+            --accent-color: #00d4ff;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --success: #28a745;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+		
+		#box{
+		background-color:#fff;
+		}
+		
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .cta-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2c2c2c 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="crossfit-pattern" patternUnits="userSpaceOnUse" width="20" height="20"><circle cx="10" cy="10" r="1" fill="rgba(255,107,53,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23crossfit-pattern)"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .trust-signals {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-cta {
+            background: var(--primary-color);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255,107,53,0.3);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,107,53,0.4);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--secondary-color);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .pricing-card {
+            background: white;
+            border: 3px solid var(--light-bg);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .features li:before {
+            content: '✓';
+            color: var(--success);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            background: var(--secondary-color);
+            color: white;
+            padding: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 25px;
+            display: none;
+            line-height: 1.8;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonial-card {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 20px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Location */
+        .location {
+            padding: 80px 0;
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .location-info {
+            margin-top: 30px;
+        }
+
+        .location-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .location-item {
+            text-align: center;
+        }
+
+        .location-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .trust-signals {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .benefits-grid,
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": ["ExerciseGym", "SportsActivityLocation"],
+        "name": "IMPERIUM Crosstraining - CrossFit Granada",
+        "description": "El mejor box de CrossFit en Granada con entrenadores certificados. Clases grupales, entrenamiento personalizado y área libre.",
+        "url": "https://imperiumcrosstraining.es/crossfit-granada/",
+        "sport": "CrossFit",
+        "priceRange": "55€-85€",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "C.C Neptuno, Calle Arabial 45, Local 79",
+            "addressLocality": "Granada",
+            "postalCode": "18004",
+            "addressCountry": "ES"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "37.169088",
+            "longitude": "-3.607227"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Servicios CrossFit Granada",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Clases CrossFit Grupales",
+                        "description": "Clases de CrossFit dirigidas por entrenadores certificados Level 1"
+                    },
+                    "price": "55",
+                    "priceCurrency": "EUR",
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Entrenamiento CrossFit Personal",
+                        "description": "Sesiones individuales de CrossFit con entrenador personal"
+                    },
+                    "availability": "https://schema.org/InStock"
+                }
+            ]
+        },
+        "amenityFeature": [
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Parking gratuito",
+                "value": "2 horas gratis"
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Duchas",
+                "value": true
+            },
+            {
+                "@type": "LocationFeatureSpecification",
+                "name": "Equipamiento CrossFit completo",
+                "value": true
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "40"
+        }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "¿Cuánto cuesta CrossFit en Granada?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "En IMPERIUM Crosstraining los precios van desde 55€/mes para 2 días a la semana hasta 85€/mes para acceso ilimitado."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "¿Los entrenadores están certificados?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Sí, todos nuestros entrenadores de CrossFit están certificados y tienen amplia experiencia en entrenamiento funcional y CrossFit."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <i class="fas fa-dumbbell"></i>
+                    IMPERIUM Crosstraining Granada
+                </div>
+               
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>EL MEJOR BOX DE CROSSFIT<br>EN GRANADA</h1>
+                <p class="hero-subtitle">Entrenadores certificados • Grupos reducidos </p>
+                
+                <div class="trust-signals">
+                    <div class="trust-item">
+                        <i class="fas fa-star"></i> 5.0 Google (40+ reseñas)
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-certificate"></i> Coaches Certificados
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-parking"></i> Parking GRATIS 2h
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-euro-sign"></i> Desde 55€/mes
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir IMPERIUM para CrossFit?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Entrenadores Certificados</h3>
+                    <p>Todos nuestros coaches están certificados con años de experiencia. Te guiarán paso a paso para conseguir la mejor técnica y resultados.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Grupos Reducidos</h3>
+                    <p>Para garantizar atención personalizada. Cada movimiento será supervisado y corregido si es necesario.</p>
+                </div>
+
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Ubicación Perfecta</h3>
+                    <p>En C.C Neptuno, Arabial 45. Fácil acceso en transporte público y parking gratuito de 2 horas para todos los clientes.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horarios Amplios</h3>
+                    <p>Clases desde las 7:00 hasta las 22:00. Encaja tu entrenamiento de CrossFit antes del trabajo, al mediodía o por la noche.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Comunidad IMPERIUM</h3>
+                    <p>Únete a una comunidad de personas que comparten tu pasión por el fitness y el crecimiento personal. Motivación garantizada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Precios CrossFit Granada - Los Más Competitivos</h2>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>CrossFit 2 Días</h3>
+                    <div class="price">55€<span class="price-period">/mes</span></div>
+                    <ul class="features">
+                        <li>8 clases de CrossFit al mes</li>
+                        <li>Acceso a vestuarios y duchas</li>
+                        <li>Asesoramiento técnico incluido</li>
+                        <li>Parking gratuito 2 horas</li>
+                        <li>App de seguimiento</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>CrossFit Ilimitado</h3>
+                    <div class="price">85€<span class="price-period">/mes</span></div>
+                    <ul class="features">
+                        <li>Clases CrossFit ILIMITADAS</li>
+                        <li>Acceso a área libre</li>
+                        <li>Programación personalizada</li>
+                        <li>Análisis de composición corporal</li>
+                        <li>Talleres técnicos gratuitos</li>
+                        <li>Descuentos en suplementación</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Bono 10 Clases</h3>
+                    <div class="price">80€<span class="price-period">/bono</span></div>
+                    <ul class="features">
+                        <li>10 clases de CrossFit</li>
+                        <li>Válido por 3 meses</li>
+                        <li>Ideal para probar</li>
+                        <li>Transferible a otros planes</li>
+                        <li>Sin permanencia</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes sobre CrossFit en Granada</h2>
+            
+           
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    ¿Cuánto cuesta CrossFit en Granada?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Nuestros precios van desde 55€/mes para 2 días a la semana hasta 85€/mes para acceso ilimitado. Somos el box con mejor relación calidad-precio de Granada. 
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    ¿Necesito experiencia previa para hacer CrossFit?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    No necesitas experiencia previa. Nuestros entrenadores certificados adaptan cada ejercicio a tu nivel. Comenzamos con movimientos básicos y progresamos gradualmente. El 70% de nuestros miembros empezaron sin experiencia.
+                </div>
+            </div>
+
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    ¿Dónde está ubicado exactamente?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Estamos en C.C Neptuno, Calle Arabial 45, Local 79. Es muy fácil llegar en transporte público (línea de metro cercana) y tenemos parking gratuito de 2 horas para todos nuestros clientes.
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <!-- Location -->
+    <section class="location">
+        <div class="container">
+            <h2 class="section-title" id="box" >Ven a Conocer Nuestro Box de CrossFit</h2>
+            <p>Ubicación perfecta en el corazón de Granada</p>
+            
+            <div class="location-details">
+                <div class="location-item">
+                    <div class="location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Dirección</h3>
+                    <p>C.C Neptuno<br>Calle Arabial 45, Local 79<br>18004 Granada</p>
+                </div>
+
+                <div class="location-item">
+                    <div class="location-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>Parking</h3>
+                    <p>2 horas GRATIS<br>para todos los clientes<br>Centro Comercial</p>
+                </div>
+
+                <div class="location-item">
+                    <div class="location-icon">
+                        <i class="fas fa-subway"></i>
+                    </div>
+                    <h3>Transporte</h3>
+                    <p>Metro línea 1<br>Paradas cercanas<br>Varias líneas de bus</p>
+                </div>
+
+                <div class="location-item">
+                    <div class="location-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horarios</h3>
+                    <p>Lun-Vie: 7:00-22:00<br>Sábado: 10:00-13:00<br>Domingo: Cerrado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta" id="cta">
+        <div class="container">
+            <h2>¿Listo para empezar CrossFit en Granada?</h2>
+          
+         
+            <div style="margin: 30px 0;">
+                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; display: inline-block;">
+                    <i class="fas fa-phone"></i> 651 01 33 21 &nbsp;&nbsp;&nbsp;
+                    <i class="fas fa-envelope"></i> hello@imperiumcrosstraining.com &nbsp;&nbsp;&nbsp;
+					<i class="fas fa-envelope"></i> https://www.instagram.com/imperiumboxgr/#
+                </div>
+            </div>
+                     
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            // Close all other FAQs
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.faq-question i').forEach(item => {
+                if (item !== icon) {
+                    item.style.transform = 'rotate(0deg)';
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        // Floating header on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255,255,255,0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = '#ffffff';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Click tracking for analytics
+        function trackClick(event, element) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    event_category: 'CTA',
+                    event_label: element,
+                    value: 1
+                });
+            }
+        }
+
+        // Add click tracking to all CTAs
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctas = document.querySelectorAll('.cta-header, .hero-cta, .cta-button');
+            ctas.forEach(cta => {
+                cta.addEventListener('click', function(e) {
+                    trackClick(e, this.innerText);
+                });
+            });
+        });
+    </script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+        
+        // Track landing page views
+        gtag('event', 'page_view', {
+            page_title: 'CrossFit Granada - IMPERIUM',
+            page_location: window.location.href,
+            custom_parameter: 'crossfit_landing'
+        });
+    </script>
+</body>
+</html>

@@ -693,10 +693,10 @@
         }
 
         .trainer-info {
-            /**position: absolute;**/
+            position: absolute;
             bottom: 0;
             left: 0;
-            height: 100%;
+            width: 100%;
             padding: 30px;
             background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
             color: var(--light);
@@ -719,7 +719,7 @@
             font-weight: 600;
             margin-bottom: 15px;
             opacity: 0.8;
-			color:black;
+			color:white;
         }
 
         .trainer-socials {
@@ -2287,7 +2287,6 @@ header.scrolled .logo-text {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
-	height: 735px;
 }
 
 .trainer-img {
