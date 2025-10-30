@@ -1,10 +1,70 @@
-# robots.txt - Subir a la raíz de tu web
+# robots.txt optimizado para IMPERIUM Crosstraining
+# Última actualización: 29 octubre 2025
+
+# Permitir acceso a todos los bots legítimos
 User-agent: *
 Allow: /
+
+# Permitir específicamente recursos importantes
+Allow: /css/
+Allow: /js/
+Allow: /img/
+Allow: /fonts/
+
+# Bloquear directorios administrativos y sensibles
 Disallow: /admin/
 Disallow: /wp-admin/
-Disallow: *.pdf$
+Disallow: /cgi-bin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Bloquear archivos específicos
+Disallow: /*.pdf$
+Disallow: /error/
+Disallow: /*.log$
+
+# Crawl delay para no sobrecargar servidor
 Crawl-delay: 1
 
-# Sitemap
+# Sitemaps (muy importante)
 Sitemap: https://imperiumcrosstraining.es/sitemap.xml
+Sitemap: https://imperiumcrosstraining.es/sitemap-images.xml
+
+# Configuración específica para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Configuración para Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /img/
+Disallow: /img/admin/
+
+# Bloquear bots maliciosos conocidos
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: DotBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: Mediatoolkitbot
+Disallow: /
+
+# Permitir bots de redes sociales
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /

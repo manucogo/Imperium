@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Blog IMPERIUM Crosstraining | Guías y Consejos Granada</title>
+    <meta name="description" content="Consejos, guías y artículos sobre crosstraining y entrenamiento funcional. Aprende todo sobre fitness en el blog de IMPERIUM Crosstraining Granada.">
+    <meta name="robots" content="index, follow">
+    
+    <link rel="canonical" href="https://imperiumcrosstraining.es/blog/">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <style>
+        /* Variables CSS para consistencia */
+        :root {
+            --primary-color: #e63946;
+            --primary-dark: #d62839;
+            --secondary-color: #1a1a1a;
+            --text-color: #333;
+            --text-light: #666;
+            --bg-light: #f8f9fa;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --max-width: 1200px;
+        }
+        
+        /* Estilos generales para el blog */
+        .blog-hero {
+			background: #ff6600;
+			padding: 14px 20px 31px;
+			text-align: center;
+			color: white;
+			position: relative;
+			overflow: hidden;
+		}
+        
+        .blog-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M500,97C126.7,96.3,0.8,19.8,0,0v100l1000,0V0C1000,19.4,873.3,97.8,500,97z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100% 100px;
+            background-position: bottom;
+            background-repeat: no-repeat;
+        }
+        
+        .blog-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .blog-hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .blog-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin: 80px auto;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .blog-card-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .blog-card-image {
+            transform: scale(1.05);
+        }
+        
+        .blog-card-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .blog-card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .blog-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+            line-height: 1.4;
+            font-weight: 600;
+        }
+        
+        .blog-card h2 a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .blog-card h2 a:hover {
+            color: var(--primary-color);
+        }
+        
+        .blog-card-excerpt {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .blog-card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            align-self: flex-start;
+        }
+        
+        .blog-card-btn:hover {
+            gap: 12px;
+        }
+        
+        .blog-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .coming-soon {
+            position: relative;
+        }
+        
+        .coming-soon::after {
+            content: "PRÓXIMAMENTE";
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffc107;
+            color: #1a1a1a;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+        
+        .blog-sidebar {
+            display: none;
+        }
+        
+        /* Estilos del widget del sidebar */
+        .sidebar-widget {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--primary-color);
+            font-weight: 700;
+        }
+        
+        /* Estilos mejorados para las categorías */
+        .categories-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .categories-list li {
+            margin-bottom: 5px;
+        }
+        
+        .categories-list a {
+            display: flex;
+            align-items: center;
+            padding: 14px 18px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            background: #f8f9fa;
+        }
+        
+        .categories-list a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: linear-gradient(135deg, var(--primary-color), #ff7b54);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .categories-list a::after {
+            content: '→';
+            margin-left: auto;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-15px) scale(0.8);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .categories-list a:hover {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), #ff7b54);
+            padding-left: 28px;
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+        }
+        
+        .categories-list a:hover::before {
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+        
+        .categories-list a:hover::after {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+        }
+        
+        /* Estilos para artículos populares */
+        .popular-post {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .popular-post:last-child {
+            border-bottom: none;
+        }
+        
+        .popular-post h4 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .popular-post h4 a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+        
+        .popular-post h4 a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .popular-post span {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+        
+        /* Estilos para los tags */
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tags-list a {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #f8f9fa;
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .tags-list a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0 40px;
+        }
+        
+        .blog-pagination .pagination-list {
+            display: flex;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .blog-pagination .pagination-item a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .blog-pagination .pagination-item.active a,
+        .blog-pagination .pagination-item a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .blog-newsletter {
+            background: var(--bg-light);
+            padding: 60px 20px;
+            margin: 80px 0;
+            text-align: center;
+            border-radius: var(--border-radius);
+        }
+        
+        .blog-newsletter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+        
+        .blog-newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--primary-dark);
+        }
+        
+        @media (min-width: 992px) {
+            .blog-layout {
+                display: grid;
+                grid-template-columns: 1fr 300px;
+                gap: 50px;
+                align-items: start;
+            }
+            
+            .blog-sidebar {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-hero {
+                padding: 140px 20px 80px;
+            }
+            
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .blog-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+                margin: 40px auto;
+                gap: 30px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+		/* ==========================================
+   VIDEO HERO BACKGROUND
+   ========================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Contenedor del video */
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Video de fondo */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* Overlay para oscurecer el video y mejorar legibilidad */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta opacidad según necesites */
+    z-index: 1;
+}
+
+/* Asegurar que el contenido esté encima del video */
+.hero .container,
+.hero-content,
+.hero-buttons,
+.hero-socials,
+.scroll-down {
+    position: relative;
+    z-index: 2;
+}
+
+/* Fallback si el video no carga - imagen de fondo */
+.hero {
+    background-image: url('../img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Responsive - Pausar video en móviles para ahorrar datos */
+@media (max-width: 768px) {
+    .hero-video {
+        display: none; /* Ocultar video en móvil */
+    }
+    
+    .hero {
+        background-image: url('../img/hero-bg.jpg'); /* Usar imagen en móvil */
+    }
+}
+
+/* Performance - Optimización GPU */
+.hero-video {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+    </style>
+</head>
+<body>
+   
+
+		   <section class="blog-hero">
+			<div class="hero-video-container">
+				<video class="hero-video" autoplay muted loop playsinline poster="../img/cabecera-poster.jpg">
+					<source src="../img/cabecera.mp4" type="video/mp4">
+					<source src="../img/cabecera.webm" type="video/webm">
+					Tu navegador no soporta la reproducción de video.
+				</video>
+			</div>
+			<h1><img src="../img/logo_color.png" style="width: 100px;"> Blog IMPERIUM Crosstraining</h1>
+			<p>Guías, consejos, eventos y todo lo que necesitas saber sobre Imperium</p>
+		</section>
+
+
+    <div class="blog-container">
+        <div class="blog-layout">
+            <div>
+                <div class="blog-grid">
+                    <!-- Artículo 1 - PUBLICADO -->
+                    <article class="blog-card">
+                        <div class="blog-card-image-container">
+                            <span class="blog-category">Principiantes</span>
+                            <img src="../img/grupal.jpeg" alt="Crosstraining para principiantes" class="blog-card-image">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar"></i> 29 Oct 2025</span>
+                                <span><i class="fas fa-clock"></i> 9 min</span>
+                            </div>
+                            <h2><a href="crosstraining-principiantes-guia-completa">Crosstraining para Principiantes: Guía Completa 2025</a></h2>
+                            <p class="blog-card-excerpt">
+                                ¿Quieres empezar crosstraining pero no sabes por dónde comenzar? Descubre todo lo que necesitas 
+                                saber: qué esperar, equipamiento necesario, errores a evitar y más.
+                            </p>
+                            <a href="crosstraining-principiantes-guia-completa" class="blog-card-btn">
+                                Leer artículo <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 2  -->
+                    <article class="blog-card">
+                        <div class="blog-card-image-container">
+                            <span class="blog-category">Charla</span>
+                            <img src="../img/francis.jpg" alt="Charla Francis Buendía" class="blog-card-image">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar"></i> 18 Oct 2025</span>
+                                <span><i class="fas fa-clock"></i> 8 min</span>
+                            </div>
+                            <h2>Charla con Francis Buendía sobre prevención de lesiones</h2>
+                            <p class="blog-card-excerpt">
+                                Descubre cómo el crosstraining puede transformar no solo tu físico, sino también tu salud 
+                                mental, confianza y calidad de vida.
+                            </p>
+							<a href="crosstraining-principiantes-guia-completa" class="blog-card-btn">
+                                Leer artículo <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 3 - PRÓXIMAMENTE -->
+                    <article class="blog-card coming-soon">
+                        <div class="blog-card-image-container">
+                            <span class="blog-category">Nutrición</span>
+                            <img src="../img/pesas.jpg" alt="Nutrición para crosstraining" class="blog-card-image">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar"></i> Próximamente</span>
+                                <span><i class="fas fa-clock"></i> 7 min</span>
+                            </div>
+                            <h2>Qué Comer Antes y Después del Crosstraining</h2>
+                            <p class="blog-card-excerpt">
+                                Maximiza tus resultados con la nutrición adecuada. Aprende qué, cuándo y cuánto comer para 
+                                optimizar tu rendimiento y recuperación.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 4 - PRÓXIMAMENTE -->
+                    <article class="blog-card coming-soon">
+                        <div class="blog-card-image-container">
+                            <span class="blog-category">Comparativas</span>
+                            <img src="../img/cajas.jpeg" alt="Crosstraining vs gimnasio" class="blog-card-image">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar"></i> Próximamente</span>
+                                <span><i class="fas fa-clock"></i> 10 min</span>
+                            </div>
+                            <h2>Crosstraining vs Gimnasio Tradicional: ¿Cuál Elegir?</h2>
+                            <p class="blog-card-excerpt">
+                                Comparativa completa entre crosstraining y gimnasio tradicional. Descubre cuál se adapta 
+                                mejor a tus objetivos, tiempo y presupuesto.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 5 - PRÓXIMAMENTE -->
+                    <article class="blog-card coming-soon">
+                        <div class="blog-card-image-container">
+                            <span class="blog-category">Guías</span>
+                            <img src="../img/DSC_0785.jpg" alt="Mejores boxes Granada" class="blog-card-image">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar"></i> Próximamente</span>
+                                <span><i class="fas fa-clock"></i> 12 min</span>
+                            </div>
+                            <h2>Los Mejores Boxes de Crosstraining en Granada 2025</h2>
+                            <p class="blog-card-excerpt">
+                                Guía completa de los boxes de crosstraining en Granada. Comparativa, ubicaciones, precios 
+                                y qué hace único a cada uno.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 6 - PRÓXIMAMENTE -->
+                    <article class="blog-card coming-soon">
+                        <div class="blog-card-image-container">
+                            <span class="blog-category">Salud</span>
+                            <img src="../img/ruben.jpg" alt="Prevenir lesiones crossfit" class="blog-card-image">
+                        </div>
+                        <div class="blog-card-content">
+                            <div class="blog-card-meta">
+                                <span><i class="fas fa-calendar"></i> Próximamente</span>
+                                <span><i class="fas fa-clock"></i> 9 min</span>
+                            </div>
+                            <h2>Lesiones Comunes en Crosstraining y Cómo Prevenirlas</h2>
+                            <p class="blog-card-excerpt">
+                                Aprende a identificar, prevenir y recuperarte de las lesiones más comunes en crosstraining. 
+                                Entrena fuerte pero seguro.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Paginación -->
+                <div class="blog-pagination">
+                    <ul class="pagination-list">
+                        <li class="pagination-item active"><a href="#">1</a></li>
+                        <li class="pagination-item"><a href="#">2</a></li>
+                        <li class="pagination-item"><a href="#">3</a></li>
+                        <li class="pagination-item"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sidebar (visible en desktop) -->
+            <aside class="blog-sidebar">
+                <div class="sidebar-widget">
+                    <h3>Categorías</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Principiantes</a></li>
+                        <li><a href="#">Nutrición</a></li>
+                        <li><a href="#">Entrenamiento</a></li>
+                        <li><a href="#">Salud</a></li>
+                        <li><a href="#">Comparativas</a></li>
+                        <li><a href="#">Guías</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Artículos Populares</h3>
+                    <div class="popular-post">
+                        <h4><a href="#">Crosstraining para Principiantes</a></h4>
+                        <span>29 Oct 2025</span>
+                    </div>
+                    <div class="popular-post">
+                        <h4><a href="#">10 Beneficios del Crosstraining</a></h4>
+                        <span>Próximamente</span>
+                    </div>
+                </div>
+                
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+                    <div class="tags-list">
+                        <a href="#">#crosstraining</a>
+                        <a href="#">#fitness</a>
+                        <a href="#">#granada</a>
+                        <a href="#">#entrenamiento</a>
+                        <a href="#">#salud</a>
+                        <a href="#">#nutrición</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <section class="blog-newsletter">
+        <div class="blog-container">
+            <h3>Suscríbete a nuestro blog</h3>
+            <p>Recibe las últimas guías y consejos de crosstraining directamente en tu correo</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirme</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-widget">
+                    <h3>IMPERIUM Crosstraining</h3>
+                    <p>Tu box de referencia en Granada para entrenamiento funcional</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/imperiumboxgr/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VawTG863mFYFo2sps52O" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> C.C Neptuno, Calle Arabial 45, Local 79</p>
+                    <p><i class="fas fa-phone"></i> 651 01 33 21</p>
+                    <p><i class="fas fa-envelope"></i> hello@imperiumcrosstraining.com</p>
+                </div>
+                
+                <div class="footer-widget">
+                    <h3>Horarios</h3>
+                    <p>Lunes - Viernes: 07:00 - 22:00</p>
+                    <p>Sábados: 10:00 - 13:00</p>
+                    <p>Domingos: Cerrado</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 IMPERIUM Crosstraining. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle menú móvil
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+// Control de video hero
+const videoControl = document.getElementById('videoControl');
+const heroVideo = document.querySelector('.hero-video');
+
+if (videoControl && heroVideo) {
+    videoControl.addEventListener('click', function() {
+        if (heroVideo.paused) {
+            heroVideo.play();
+            this.innerHTML = '<i class="fas fa-pause"></i>';
+            this.setAttribute('aria-label', 'Pausar video');
+        } else {
+            heroVideo.pause();
+            this.innerHTML = '<i class="fas fa-play"></i>';
+            this.setAttribute('aria-label', 'Reproducir video');
+        }
+    });
+}
+       
+    </script>
+</body>
+</html>
