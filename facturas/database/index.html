@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de USUARIOS - Imperium Box</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="login-screen">
+            <div class="header">
+                <h1>🏋️ Imperium Box</h1>
+                <p>Sistema de Gestión</p>
+            </div>
+            
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn">Iniciar Sesión</button>
+            </form>
+        </div>
+
+        <!-- Main Application -->
+        <div id="mainApp" class="main-app hidden">
+            <div class="header" style="position: relative;">
+                <h1>🏋️ Sistema de Gestión Imperium Box</h1>
+                <p>Panel de Control y Facturación</p>
+                <button class="logout-btn" onclick="logout()">Cerrar Sesión</button>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showTab('crear')">
+                    <i>👤</i> Crear Usuario
+                </div>
+                <div class="nav-tab" onclick="showTab('buscar')">
+                    <i>🔍</i> Buscar Usuarios
+                </div>
+                <div class="nav-tab" onclick="showTab('facturas')">
+                    <i>📄</i> Generar Facturas
+                </div>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="tabCrear" class="tab-content active">
+                <h2>Crear Nuevo Usuario</h2>
+                
+                <!-- Importar usuarios desde Excel -->
+                <div class="form-container" style="margin-bottom: 20px; background: #e8f5e8;">
+                    <h3>📊 Importar Usuarios desde Excel</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="excelFile">Seleccionar archivo Excel:</label>
+                            <input type="file" id="excelFile" accept=".xlsx,.xls" onchange="procesarExcel()">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-info" onclick="mostrarPlantillaExcel()">Ver Plantilla</button>
+                        </div>
+                    </div>
+                    <div id="excelProgress" class="hidden">
+                        <div class="message info">Procesando archivo...</div>
+                    </div>
+                    <div id="excelResults"></div>
+                </div>
+
+                <!-- NUEVA SECCIÓN: Importar SOLO facturas para usuarios existentes -->
+                <div class="form-container" style="margin-bottom: 20px; background: #e3f2fd;">
+                    <h3>💰 Importar Facturas para Usuarios Existentes</h3>
+                    <p style="color: #666; margin-bottom: 15px; font-size: 14px;">
+                        Esta opción crea SOLO facturas para usuarios que ya existen en la BD (busca por DNI)
+                    </p>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="excelFileConFacturas">Seleccionar archivo Excel con facturas:</label>
+                            <input type="file" id="excelFileConFacturas" accept=".xlsx,.xls" onchange="procesarExcelConFacturas()">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-warning" onclick="mostrarPlantillaExcelConFacturas()">📋 Ver Plantilla Específica</button>
+                        </div>
+                    </div>
+                    <div id="excelProgressConFacturas" class="hidden">
+                        <div class="message info">Procesando archivo con facturas...</div>
+                    </div>
+                    <div id="excelResultsConFacturas"></div>
+                </div>
+
+                <!-- Formulario manual de usuario -->
+                <div class="form-container">
+                    <h3>Crear Usuario Individual</h3>
+                    <form id="crearUsuarioForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="primerApellido">Primer Apellido:</label>
+                                <input type="text" id="primerApellido" name="primerApellido" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="segundoApellido">Segundo Apellido:</label>
+                                <input type="text" id="segundoApellido" name="segundoApellido">
+                            </div>
+                            <div class="form-group">
+                                <label for="activo">Estado:</label>
+                                <select id="activo" name="activo" required>
+                                    <option value="1" selected>Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="dni">DNI:</label>
+                                <input type="text" id="dni" name="dni" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="tel" id="telefono" name="telefono">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" id="direccion" name="direccion">
+                            </div>
+                            <div class="form-group">
+                                <label for="codigoPostal">Código Postal:</label>
+                                <input type="text" id="codigoPostal" name="codigoPostal">
+                            </div>
+                            <div class="form-group">
+                                <label for="localidad">Localidad:</label>
+                                <input type="text" id="localidad" name="localidad" value="Granada">
+                            </div>
+                        </div>
+                        
+                        <h3>Datos de Facturación</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipoServicio">Tipo de Servicio:</label>
+                                <select id="tipoServicio" name="tipoServicio" required>
+                                    <option value="">Seleccione un servicio</option>
+                                    
+                                    <!-- OPEN -->
+                                    <optgroup label="OPEN">
+                                        <option value="open_2dias" data-precio="55">OPEN 2 días semana - 55€</option>
+                                        <option value="open_3dias" data-precio="65">OPEN 3 días semana - 65€</option>
+                                        <option value="open_4dias" data-precio="75">OPEN 4 días semana - 75€</option>
+                                        <option value="open_ilimitado" data-precio="85">OPEN Ilimitado - 85€</option>
+                                    </optgroup>
+                                    
+                                    <!-- CLASES -->
+                                    <optgroup label="CLASES">
+                                        <option value="clases_2dias" data-precio="55">CLASES 2 días semana - 55€</option>
+                                        <option value="clases_3dias" data-precio="65">CLASES 3 días semana - 65€</option>
+                                        <option value="clases_4dias" data-precio="75">CLASES 4 días semana - 75€</option>
+                                        <option value="clases_ilimitado" data-precio="85">CLASES Ilimitado - 85€</option>
+                                    </optgroup>
+                                    
+                                    <!-- BONOS -->
+                                    <optgroup label="BONOS">
+                                        <option value="bono_1sesion" data-precio="10">BONO 1 Sesión (CLASE/OPEN) - 10€</option>
+                                        <option value="bono_10sesiones" data-precio="80">BONO 10 Sesiones (CLASES/OPEN) - 80€</option>
+                                        <option value="bono_3clases_1open" data-precio="75">BONO 3 Días Clases + 1 Día Open - 75€</option>
+                                        <option value="bono_3clases_2open" data-precio="85">BONO 3 Días Clases + 2 Días Open - 85€</option>
+                                    </optgroup>
+									<!-- PERSONALIZADO - NUEVO -->
+									<optgroup label="PERSONALIZADO">
+										<option value="personalizado" data-precio="0">✨ Servicio Personalizado - Precio Manual</option>
+									</optgroup>
+									
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="precio">Precio (€):</label>
+                                <input type="number" id="precio" name="precio" step="0.01" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group" id="observacionesGroup" style="display: none;">
+							<label for="observaciones">Observaciones / Descripción personalizada:</label>
+							<textarea id="observaciones" name="observaciones" rows="3" placeholder="Describe el servicio personalizado (ej: Sesión individual, entrenamiento especial, etc.)"></textarea>
+						</div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formaPago">Forma de Pago:</label>
+                                <select id="formaPago" name="formaPago" required>
+                                    <option value="">Seleccione forma de pago</option>
+                                    <option value="tarjeta">Tarjeta</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="transferencia">Transferencia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaPago">Fecha de Pago:</label>
+                                <input type="date" id="fechaPago" name="fechaPago" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn">Crear Usuario y Factura</button>
+                    </form>
+                </div>
+                
+                <div id="mensajeCrear"></div>
+            </div>
+
+            <!-- Tab Buscar -->
+            <div id="tabBuscar" class="tab-content">
+                <h2>Buscar Usuarios</h2>
+                
+                <div class="search-container">
+                    <div class="search-row">
+                        <div class="form-group">
+                            <label for="busqueda">Buscar por nombre o DNI:</label>
+                            <input type="text" id="busqueda" name="busqueda" placeholder="Escriba el nombre o DNI del usuario">
+                        </div>
+                        <button type="button" class="btn" onclick="buscarUsuarios()">Buscar</button>
+                        <button type="button" class="btn btn-info" onclick="listarTodosUsuarios()">📋 Listar Todos</button>
+                    </div>
+                </div>
+                
+                <div id="resultadosBusqueda"></div>
+                
+                <!-- Formulario para nueva factura -->
+                <div id="nuevaFacturaForm" class="form-container hidden">
+                    <h3>Renovación</h3>
+                    <form id="formNuevaFactura">
+                        <input type="hidden" id="usuarioId" name="usuarioId">
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipoServicio2">Tipo de Servicio:</label>
+                                <select id="tipoServicio2" name="tipoServicio2" required>
+                                    <option value="">Seleccione un servicio</option>
+                                    <!-- OPEN -->
+                                    <optgroup label="OPEN">
+                                        <option value="open_2dias" data-precio="55">OPEN 2 días semana - 55€</option>
+                                        <option value="open_3dias" data-precio="65">OPEN 3 días semana - 65€</option>
+                                        <option value="open_4dias" data-precio="75">OPEN 4 días semana - 75€</option>
+                                        <option value="open_ilimitado" data-precio="85">OPEN Ilimitado - 85€</option>
+                                    </optgroup>
+                                    
+                                    <!-- CLASES -->
+                                    <optgroup label="CLASES">
+                                        <option value="clases_2dias" data-precio="55">CLASES 2 días semana - 55€</option>
+                                        <option value="clases_3dias" data-precio="65">CLASES 3 días semana - 65€</option>
+                                        <option value="clases_4dias" data-precio="75">CLASES 4 días semana - 75€</option>
+                                        <option value="clases_ilimitado" data-precio="85">CLASES Ilimitado - 85€</option>
+                                    </optgroup>
+                                    
+                                    <!-- BONOS -->
+                                    <optgroup label="BONOS">
+                                        <option value="bono_1sesion" data-precio="10">BONO 1 Sesión (CLASE/OPEN) - 10€</option>
+                                        <option value="bono_10sesiones" data-precio="80">BONO 10 Sesiones (CLASES/OPEN) - 80€</option>
+                                        <option value="bono_3clases_1open" data-precio="75">BONO 3 Días Clases + 1 Día Open - 75€</option>
+                                        <option value="bono_3clases_2open" data-precio="85">BONO 3 Días Clases + 2 Días Open - 85€</option>
+                                    </optgroup>
+									  <optgroup label="PERSONALIZADO">
+									<option value="personalizado" data-precio="0">✨ Servicio Personalizado - Precio Manual</option>
+								</optgroup>
+								
+                                </select>
+                            </div>
+							<div class="form-group" id="observacionesGroup2" style="display: none;">
+								<label for="observaciones2">Observaciones / Descripción personalizada:</label>
+								<textarea id="observaciones2" name="observaciones2" rows="3" placeholder="Describe el servicio personalizado (ej: Sesión individual, entrenamiento especial, etc.)"></textarea>
+							</div>
+							<div class="form-group">
+                                <label for="precio2">Precio (€):</label>
+                                <input type="number" id="precio2" name="precio2" step="0.01" readonly>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="formaPago2">Forma de Pago:</label>
+                                <select id="formaPago2" name="formaPago2" required>
+                                    <option value="">Seleccione forma de pago</option>
+                                    <option value="tarjeta">Tarjeta</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="transferencia">Transferencia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="fechaPago2">Fecha de Pago:</label>
+                                <input type="date" id="fechaPago2" name="fechaPago2" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn">RENOVACIÓN</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelarNuevaFactura()">Cancelar</button>
+                    </form>
+                </div>
+                
+                <div id="mensajeBuscar"></div>
+            </div>
+
+            <!-- Tab Facturas -->
+            <div id="tabFacturas" class="tab-content">
+                <h2>Generar Facturas por Mes</h2>
+                
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mesSeleccionado">Seleccionar Mes:</label>
+                            <input type="month" id="mesSeleccionado" name="mesSeleccionado" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn" onclick="cargarFacturasMes()">Cargar Facturas</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="facturasList"></div>
+                
+                <div class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="facturaSelect">Seleccionar Factura:</label>
+                            <select id="facturaSelect" name="facturaSelect">
+                                <option value="">Cargue primero las facturas del mes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="numeroFactura">Número de Factura:</label>
+                            <input type="text" id="numeroFactura" name="numeroFactura" value="IMPERIUMBOXGR/1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <button type="button" class="btn" onclick="generarFactura()">Generar Factura</button>
+                        <button type="button" class="btn btn-secondary" onclick="descargarFacturaPDF()">Descargar PDF</button>
+                        <button type="button" class="btn btn-warning" onclick="descargarTodasFacturas()">Descargar Todas (ZIP)</button>
+                    </div>
+                </div>
+                
+                <div class="factura-preview">
+                    <div class="no-data">
+                        📋 Seleccione una factura para generar la vista previa
+                    </div>
+                </div>
+                
+                <div id="mensajeFacturas"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pdf_web_generator.js"></script>
+    <script src="js/logo-config.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

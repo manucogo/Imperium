@@ -2026,3 +2026,121 @@ window.addEventListener('orientationchange', function() {
         }
     }, 500); // Dar tiempo para el cambio de orientación
 });
+
+// ========== CARRUSEL DE NOVEDADES ==========
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+    let novedadCurrentSlide = 0;
+    let novedadAutoPlayInterval;
+    
+    const novedadCarouselTrack = document.getElementById('novedadCarousel');
+    
+    if (!novedadCarouselTrack) {
+        console.log('Carrusel de novedades no encontrado');
+        return;
+    }
+    
+    const novedadSlides = novedadCarouselTrack.querySelectorAll('.carousel-slide');
+    const novedadIndicators = document.querySelectorAll('.carousel-indicators .indicator');
+    
+    console.log('Carrusel inicializado:', novedadSlides.length, 'slides encontrados');
+    
+    function updateNovedadCarousel() {
+        if (!novedadCarouselTrack || novedadSlides.length === 0) return;
+        
+        // Mover el carrusel
+        const offset = -novedadCurrentSlide * 100;
+        novedadCarouselTrack.style.transform = `translateX(${offset}%)`;
+        
+        // Actualizar clases active en slides
+        novedadSlides.forEach((slide, index) => {
+            if (index === novedadCurrentSlide) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+        
+        // Actualizar indicadores
+        novedadIndicators.forEach((indicator, index) => {
+            if (index === novedadCurrentSlide) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
+    
+    // Función para mover el carrusel (disponible globalmente)
+    window.moveNovedadCarousel = function(direction) {
+        if (!novedadCarouselTrack || novedadSlides.length === 0) return;
+        
+        // Actualizar slide actual
+        novedadCurrentSlide += direction;
+        
+        // Loop infinito
+        if (novedadCurrentSlide < 0) {
+            novedadCurrentSlide = novedadSlides.length - 1;
+        } else if (novedadCurrentSlide >= novedadSlides.length) {
+            novedadCurrentSlide = 0;
+        }
+        
+        updateNovedadCarousel();
+        resetNovedadAutoPlay();
+    };
+    
+    // Función para ir a un slide específico (disponible globalmente)
+    window.goToNovedadSlide = function(index) {
+        if (!novedadCarouselTrack || novedadSlides.length === 0) return;
+        novedadCurrentSlide = index;
+        updateNovedadCarousel();
+        resetNovedadAutoPlay();
+    };
+    
+    // Auto-play del carrusel de novedades (cada 5 segundos)
+    function startNovedadAutoPlay() {
+        if (novedadSlides.length > 1) {
+            novedadAutoPlayInterval = setInterval(() => {
+                window.moveNovedadCarousel(1);
+            }, 5000);
+        }
+    }
+    
+    function resetNovedadAutoPlay() {
+        clearInterval(novedadAutoPlayInterval);
+        startNovedadAutoPlay();
+    }
+    
+    // Iniciar auto-play
+    startNovedadAutoPlay();
+    
+    // Soporte para gestos táctiles en el carrusel
+    let novedadTouchStartX = 0;
+    let novedadTouchEndX = 0;
+    
+    const carouselContainer = novedadCarouselTrack.parentElement;
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+        novedadTouchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carouselContainer.addEventListener('touchend', (e) => {
+        novedadTouchEndX = e.changedTouches[0].screenX;
+        handleNovedadSwipe();
+    }, { passive: true });
+    
+    function handleNovedadSwipe() {
+        const swipeThreshold = 50;
+        
+        if (novedadTouchEndX < novedadTouchStartX - swipeThreshold) {
+            window.moveNovedadCarousel(1);
+        }
+        
+        if (novedadTouchEndX > novedadTouchStartX + swipeThreshold) {
+            window.moveNovedadCarousel(-1);
+        }
+    }
+    
+    // Inicializar el carrusel mostrando el primer slide
+    updateNovedadCarousel();
+});
